@@ -8,12 +8,17 @@ const styles = StyleSheet.create({
     },
 
     iconPlus: {
-        marginRight: 10,
+      marginRight: 10,
     },
 
     flat: {
-        flex: 1,
-        width: '100%',
+      flex: 1,
+      width: '100%',
+    },
+
+    noNotes: {
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     
   });

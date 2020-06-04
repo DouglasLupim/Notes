@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, TouchableOpacity, FlatList } from 'react-native';
+import { View, TouchableOpacity, FlatList, Text } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import styles from './styles';
@@ -23,13 +23,16 @@ export default () => {
         });
     }, []);
 
-    const handleNotePress = () => {
-
+    const handleNotePress = (index) => {
+        navigation.navigate('EditarNotas', {
+            key: index
+        });
     }
 
     return (
         <View style={styles.container}>
-            <FlatList style={styles.flat}
+            {list.length > 0 && 
+                <FlatList style={styles.flat}
                     data={list}
                     renderItem={({item, index}) => (
                         <NoteItem 
@@ -40,6 +43,13 @@ export default () => {
                     )}
                     keyExtractor={(item, index) => index.toString()}
                 />
+            }
+            {list.length == 0 &&
+                <View style={styles.noNotes}>
+                    <Icon name="send" size={24} color="black" /> 
+                    <Text>Você não possui notas!</Text>
+                </View>
+            }
         </View>
     );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler';
 
 import { store, persistor } from './src/store';
 import MainRoute from './src/routes/main.routes';
