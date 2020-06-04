@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import styles from './styles';
+import Icon from 'react-native-vector-icons/Feather';
 
 export default () => {
 
@@ -17,6 +18,7 @@ export default () => {
   const [status, setStatus] = useState('new');
 
   useEffect(() => {
+    console.log(list);
     if(route.params?.key != undefined && list[route.params.key]) {
       setStatus('edit');
       setTitle(list[route.params.key].title);
@@ -24,6 +26,34 @@ export default () => {
     }
   }, []);
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitleStyle: { alignSelf: 'center' },
+      title: status == 'new' ? 'Nova Anotação' : 'Editar Anotação',
+      headerLeft: () => (
+        <TouchableOpacity style={styles.iconClose} onPress={handleCloseButton}>
+          <Icon name="x" size={24} color="black" /> 
+        </TouchableOpacity>
+      ),
+      headerRight: () => (
+        <TouchableOpacity style={styles.iconSave} onPress={handleSaveButton}>
+          <Icon name="save" size={24} color="black" /> 
+        </TouchableOpacity>
+      )
+    })
+  }, [status, title, body]);
+
+  const handleCloseButton = () => {
+    navigation.goBack();
+  }
+
+  const handleSaveButton = () => {
+    if(title != '' && body != '') {
+
+    } else {
+      alert('Preencha todos os campos!')
+    }
+  }
   return (
       <View style={styles.container}>
           <TextInput 

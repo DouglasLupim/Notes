@@ -15,6 +15,14 @@ const styles = StyleSheet.create({
       flex: 1,
       padding: '5%',
     },
+
+    iconSave: {
+      marginRight: 10,
+    },
+
+    iconClose: {
+      marginLeft: 10,
+    },
     
   });
 
