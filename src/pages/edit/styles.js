@@ -23,6 +23,20 @@ const styles = StyleSheet.create({
     iconClose: {
       marginLeft: 10,
     },
+
+    btnContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+
+    deleteBtn: {
+      width: 100,
+      height: 30,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#ff3333',
+      borderRadius: 10,
+    },  
     
   });
 

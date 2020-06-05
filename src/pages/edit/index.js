@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { View, TextInput, TouchableOpacity } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
@@ -49,10 +49,35 @@ export default () => {
 
   const handleSaveButton = () => {
     if(title != '' && body != '') {
-
+      if(status == 'edit') {
+        dispatch({
+          type: 'EDIT_NOTE',
+          payload: {
+            key: route.params.key,
+            title,
+            body
+          }
+        })
+      } else {
+        dispatch({
+          type: 'ADD_NOTE',
+          payload: {title, body}
+        })
+      }
+      navigation.goBack();
     } else {
       alert('Preencha todos os campos!')
     }
+  }
+
+  const handleDeleteNote = () => {
+    dispatch({
+      type: 'DEL_NOTE',
+      payload: {
+        key: route.params.key
+      }
+    });
+    navigation.goBack();
   }
   return (
       <View style={styles.container}>
@@ -69,6 +94,14 @@ export default () => {
             value={body}
             onChangeText={body=>setBody(body)}
           />
+
+          {status == 'edit' &&
+            <View style={styles.btnContainer}>
+              <TouchableOpacity style={styles.deleteBtn} onPress={handleDeleteNote}>
+                <Text>Excluir</Text>
+              </TouchableOpacity>
+            </View>
+          }
       </View>
   );
 }
