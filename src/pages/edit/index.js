@@ -80,28 +80,28 @@ export default () => {
     navigation.goBack();
   }
   return (
-      <View style={styles.container}>
-          <TextInput 
-            style={styles.title} 
-            placeholder='Título'
-            value={title}
-            onChangeText={title=>setTitle(title)}
-          />
-          <TextInput 
-            style={styles.body} 
-            placeholder='Digite suas Anotações'
-            textAlignVertical='top'
-            value={body}
-            onChangeText={body=>setBody(body)}
-          />
+    <View style={styles.container}>
+      <TextInput 
+        style={styles.title} 
+        placeholder='Título'
+        value={title}
+        onChangeText={title=>setTitle(title)}
+      />
+      <TextInput 
+        style={styles.body} 
+        placeholder='Digite suas Anotações'
+        textAlignVertical='top'
+        value={body}
+        onChangeText={body=>setBody(body)}
+      />
 
-          {status == 'edit' &&
-            <View style={styles.btnContainer}>
-              <TouchableOpacity style={styles.deleteBtn} onPress={handleDeleteNote}>
-                <Text>Excluir</Text>
-              </TouchableOpacity>
-            </View>
-          }
-      </View>
+      {status == 'edit' &&
+        <View style={styles.btnContainer}>
+          <TouchableOpacity style={styles.deleteBtn} onPress={handleDeleteNote}>
+            <Text style={styles.deleteText}>Excluir</Text>
+          </TouchableOpacity>
+        </View>
+      }
+    </View>
   );
 }

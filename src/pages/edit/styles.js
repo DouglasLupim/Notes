@@ -27,17 +27,22 @@ const styles = StyleSheet.create({
     btnContainer: {
       justifyContent: 'center',
       alignItems: 'center',
+      marginBottom: '1%'
     },
 
     deleteBtn: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#ff3333',
       width: 100,
       height: 30,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#ff3333',
       borderRadius: 10,
     },  
     
+    deleteText: {
+      color: '#fff',
+    },
+
   });
 
   export default styles;

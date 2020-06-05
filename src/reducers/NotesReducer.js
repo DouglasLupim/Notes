@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
         break;
 
         case 'DEL_NOTE':
-            newList = newList.filter((index, item) => index != action.payload.key);
+            newList = newList.filter((item, index) => index != action.payload.key);
         break;
     }
 
