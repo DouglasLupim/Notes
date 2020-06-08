@@ -1,12 +1,11 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, TouchableOpacity, FlatList, Text } from 'react-native';
+import { View, TouchableOpacity, FlatList, Text, Animated, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import styles from './styles';
 import NoteItem from '../../components/noteitem';
 import Icon from 'react-native-vector-icons/Feather';
-
 
 export default () => {
     const navigation = useNavigation();
